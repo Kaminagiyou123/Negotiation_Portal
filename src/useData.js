@@ -12,3 +12,17 @@ export default function useData() {
     data,
   };
 }
+export const destroyData = async (id) => {
+  const Airtable = require("airtable");
+  var base = new Airtable({ apiKey: process.env.REACT_APP_API_KEY }).base(
+    process.env.REACT_APP_BASE_ID
+  );
+  base("negotiation").destroy([id], function (err, deletedRecords) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("Deleted", deletedRecords.length, "records");
+  });
+  return { destroyData };
+};
