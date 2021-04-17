@@ -43,7 +43,8 @@
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   border: 3px solid #ddd;
-  width: 100%;
+  width: 80%;
+  margin-left: 20px;
 }
 
 #students td,
