@@ -83,3 +83,60 @@
   background: darkcyan;
   color: white;
 }
+.account-block {
+  margin: auto;
+
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 30%;
+  top: 20%;
+
+  display: flex;
+  flex-direction: column;
+  background: black;
+
+  color: white;
+  border: white 2px solid;
+  border-radius: 2rem;
+
+  width: 600px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.account-block-hide {
+  display: none;
+}
+.account-form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: auto;
+  background: darkcyan;
+  padding-top: 10px;
+  padding-top: 10px;
+  font-weight: 800;
+  color: black;
+}
+.account-form > input {
+  margin: 5px;
+  width: 70%;
+  margin-left: 15%;
+  border: none;
+}
+
+.account-form > .btn {
+  font-weight: 800;
+  color: black;
+  background-color: lightgrey;
+  margin-top: 10px;
+}
+textarea {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+select {
+  width: 70%;
+  margin-left: 15%;
+}
