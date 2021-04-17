@@ -53,3 +53,29 @@ export const updateData = async (id, item) => {
     }
   );
 };
+
+export const createData = (item) => {
+  var Airtable = require("airtable");
+  var base = new Airtable({ apiKey: process.env.REACT_APP_API_KEY }).base(
+    process.env.REACT_APP_BASE_ID
+  );
+
+  base("Negotiation").create(
+    [
+      {
+        fields: {
+          ...item,
+        },
+      },
+    ],
+    function (err, records) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      records.forEach(function (record) {
+        console.log(record.getId());
+      });
+    }
+  );
+};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { updateData } from "./useData";
+import { updateData, createData } from "./useData";
 const Account = ({ item, setItem }) => {
   const {
     Account_Name,
@@ -9,6 +9,8 @@ const Account = ({ item, setItem }) => {
     Anchor_Ask,
     Win_Amount,
     Negotiator_Comments,
+    Manager,
+    Stretch_Goal,
   } = item;
 
   return (
@@ -18,7 +20,13 @@ const Account = ({ item, setItem }) => {
       <h3>Account Information</h3>
       <form className='account-form'>
         <label for='Account_Name'>Account_Name</label>
-        <h4>{Account_Name}</h4>
+        <input
+          name='Account_Name'
+          value={Account_Name}
+          onChange={(e) => {
+            setItem({ ...item, Account_Name: e.target.value });
+          }}
+        ></input>
         <label for='Key_Negotiator'>Key_Negotiator</label>
         <input
           name='Key_Negotiator'
@@ -27,6 +35,25 @@ const Account = ({ item, setItem }) => {
             setItem({ ...item, Key_Negotiator: e.target.value });
           }}
         ></input>
+
+        <label for='Manager'>Manager</label>
+        <input
+          name='Manager'
+          value={Manager}
+          onChange={(e) => {
+            setItem({ ...item, Manager: e.target.value });
+          }}
+        ></input>
+
+        <label for='Stretch_Goal'>Stretch_Goal</label>
+        <input
+          name='Stretch_Goal'
+          value={Stretch_Goal}
+          onChange={(e) => {
+            setItem({ ...item, Stretch_Goal: parseFloat(e.target.value) });
+          }}
+        ></input>
+
         <label>Negotiation_Phase</label>
         <select
           name='Negotiation_Phase'
@@ -79,19 +106,36 @@ const Account = ({ item, setItem }) => {
           className='btn'
           onClick={(e) => {
             e.preventDefault();
-            console.log(item);
-            updateData(
-              item.id,
-              (item = {
-                Account_Name,
-                Key_Negotiator,
-                Goal_to_Close,
-                Anchor_Ask,
-                Win_Amount,
-                Negotiator_Comments,
-                Negotiation_Phase,
-              })
-            );
+            if (item.id) {
+              updateData(
+                item.id,
+                (item = {
+                  Account_Name,
+                  Key_Negotiator,
+                  Goal_to_Close,
+                  Anchor_Ask,
+                  Win_Amount,
+                  Negotiator_Comments,
+                  Negotiation_Phase,
+                  Manager,
+                  Stretch_Goal,
+                })
+              );
+            } else {
+              createData(
+                (item = {
+                  Account_Name,
+                  Key_Negotiator,
+                  Goal_to_Close,
+                  Anchor_Ask,
+                  Win_Amount,
+                  Negotiator_Comments,
+                  Negotiation_Phase,
+                  Manager,
+                  Stretch_Goal,
+                })
+              );
+            }
 
             setItem({
               Account_Name: "",
