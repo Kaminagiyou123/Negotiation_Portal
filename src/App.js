@@ -1,9 +1,11 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useData from "./useData";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
 import Navbar from "./Navbar";
+import Analysis from "./Analysis";
 function App() {
   const [search, setSearch] = useState({ account: "", search: "" });
   const [item, setItem] = useState({
@@ -19,17 +21,27 @@ function App() {
     Gap_to_Goal: 0,
     Negotiator_Comments: "",
   });
+  const { data, getData } = useData();
 
+  useEffect(() => {
+    async function onPageLoad() {
+      await getData();
+    }
+    onPageLoad();
+  }, [data]);
   return (
     <div>
-      <Navbar item={item} setItem={setItem} setSearch={setSearch} />
       <Router>
+        <Navbar item={item} setItem={setItem} setSearch={setSearch} />
         <Switch>
           <Route path='/login'>
             <Login />
           </Route>
-          <Route path='/'>
-            <Home item={item} setItem={setItem} search={search} />
+          <Route exact path='/'>
+            <Home item={item} setItem={setItem} search={search} data={data} />
+          </Route>
+          <Route path='/analysis'>
+            <Analysis data={data} />
           </Route>
         </Switch>
       </Router>

@@ -1,6 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import {
+  faPlusSquare,
+  faChartLine,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 const Navbar = ({ item, setItem, setSearch }) => {
   return (
     <div className='navbar'>
@@ -22,15 +27,23 @@ const Navbar = ({ item, setItem, setSearch }) => {
       </div>
 
       <h3>Negotiation Status Team ABC</h3>
-      <button
-        className='add-icon'
-        onClick={(e) => {
-          e.preventDefault();
-          setItem({ ...item, Account_Name: "New" });
-        }}
-      >
-        <FontAwesomeIcon icon={faPlusSquare} size='2x' color={"darkcyan"} />
-      </button>
+      <div>
+        <button
+          className='add-icon'
+          onClick={(e) => {
+            e.preventDefault();
+            setItem({ ...item, Account_Name: "New" });
+          }}
+        >
+          <FontAwesomeIcon icon={faPlusSquare} size='2x' color={"darkcyan"} />
+        </button>
+        <Link to='/analysis' className='add-icon'>
+          <FontAwesomeIcon icon={faChartLine} size='2x' color={"darkcyan"} />
+        </Link>
+        <Link to='/login' className='add-icon'>
+          <FontAwesomeIcon icon={faSignOutAlt} size='2x' color={"darkcyan"} />
+        </Link>
+      </div>
     </div>
   );
 };

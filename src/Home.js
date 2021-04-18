@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import useData, { destroyData } from "./useData";
+import { destroyData } from "./useData";
 import Account from "./Account";
 
-const Home = ({ item, setItem, search }) => {
-  const { data, getData } = useData();
+const Home = ({ item, setItem, search, data }) => {
   const filterData = (data) => {
     if (data) {
       let newData = [...data];
-      console.log(newData);
       if (search.account) {
         newData = newData.filter((i) =>
           i.fields.Account_Name.startsWith(search.account)
@@ -19,7 +17,7 @@ const Home = ({ item, setItem, search }) => {
           (i) => i.fields.Key_Negotiator === search.negotiator
         );
       }
-      console.log(newData);
+
       return newData;
     }
   };
@@ -55,13 +53,6 @@ const Home = ({ item, setItem, search }) => {
       Negotiator_Comments,
     });
   };
-
-  useEffect(() => {
-    async function onPageLoad() {
-      await getData();
-    }
-    onPageLoad();
-  }, [data]);
 
   return (
     <div>

@@ -157,7 +157,9 @@ select {
   margin-right: 50px;
   margin-top: 2px;
   margin-bottom: 2px;
-  border: 2px solid darkcyan;
+  background: none;
+  border: none;
+  outline: none;
 }
 .navbar > h3 {
   margin-top: 5px;
@@ -176,4 +178,16 @@ select {
   border: none;
   background: darkcyan;
   color: white;
+}
+.analysis {
+  margin-left: 10%;
+}
+.pie-chart {
+  width: 700px;
+  margin-left: 20px;
+}
+.analysis-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
