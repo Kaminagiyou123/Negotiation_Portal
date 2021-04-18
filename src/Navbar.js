@@ -48,7 +48,7 @@ const Navbar = ({ item, setItem, setSearch }) => {
         <button
           onClick={() =>
             logout({
-              returnTo: `https://ran-negotiation-dashboard.netlify.app/login`,
+              returnTo: `https://ran-negotiation-dashboard.netlify.app`,
             })
           }
           className='add-icon'
