@@ -18,6 +18,7 @@ const Account = ({ item, setItem }) => {
       className={`account-block ${Account_Name === "" && "account-block-hide"}`}
     >
       <h3>Account Information</h3>
+
       <form className='account-form'>
         <label for='Account_Name'>Account_Name</label>
         <input

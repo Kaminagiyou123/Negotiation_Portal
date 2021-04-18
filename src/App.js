@@ -6,6 +6,8 @@ import Login from "./Login";
 import Home from "./Home";
 import Navbar from "./Navbar";
 import Analysis from "./Analysis";
+import PrivateRoute from "./PrivateRoute";
+import { AuthWrapper } from "./AuthWrapper";
 function App() {
   const [search, setSearch] = useState({ account: "", search: "" });
   const [item, setItem] = useState({
@@ -31,20 +33,22 @@ function App() {
   }, [data]);
   return (
     <div>
-      <Router>
-        <Navbar item={item} setItem={setItem} setSearch={setSearch} />
-        <Switch>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <Route exact path='/'>
-            <Home item={item} setItem={setItem} search={search} data={data} />
-          </Route>
-          <Route path='/analysis'>
-            <Analysis data={data} />
-          </Route>
-        </Switch>
-      </Router>
+      <AuthWrapper>
+        <Router>
+          <Navbar item={item} setItem={setItem} setSearch={setSearch} />
+          <Switch>
+            <Route path='/login'>
+              <Login />
+            </Route>
+            <PrivateRoute path='/' exact>
+              <Home item={item} setItem={setItem} search={search} data={data} />
+            </PrivateRoute>
+            <Route path='/analysis'>
+              <Analysis data={data} />
+            </Route>
+          </Switch>
+        </Router>
+      </AuthWrapper>
     </div>
   );
 }

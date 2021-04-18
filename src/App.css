@@ -17,7 +17,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: black;
+  background-color: darkcyan;
   color: white;
   font-size: 20px;
   padding: 24px 36px;
@@ -31,7 +31,7 @@
   background-color: lightgrey;
   opacity: 0.8;
   color: black;
-  border: red 2px solid;
+  border: darkcyan 2px solid;
 }
 #title {
   text-align: center;
@@ -190,4 +190,12 @@ select {
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+}
+.backhome-btn {
+  padding: 5px;
+  height: 20px;
+  border: none;
+  background: darkcyan;
+  color: white;
+  text-decoration: none;
 }

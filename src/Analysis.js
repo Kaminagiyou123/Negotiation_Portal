@@ -57,7 +57,6 @@ const Analysis = ({ data }) => {
 
   return (
     <div>
-      <Link to='/'>Back Home</Link>
       <div className='analysis'>
         <table id='students'>
           <tbody>
